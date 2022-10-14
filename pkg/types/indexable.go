@@ -1,4 +1,4 @@
-package interfaces
+package types
 
 type Indexable interface {
 	Index() int

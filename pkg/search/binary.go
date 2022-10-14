@@ -1,14 +1,14 @@
 package search
 
-import "github.com/Felyp-Henrique/algorithm/pkg/interfaces"
+import "github.com/Felyp-Henrique/algorithm/pkg/types"
 
-type BinarySearch[T interfaces.Indexable] struct {
+type BinarySearch[T types.Indexable] struct {
 	values []T
 	low    int
 	high   int
 }
 
-func NewBinarySearch[T interfaces.Indexable](values []T) BinarySearch[T] {
+func NewBinarySearch[T types.Indexable](values []T) BinarySearch[T] {
 	return BinarySearch[T]{
 		values: values,
 		low:    0,
