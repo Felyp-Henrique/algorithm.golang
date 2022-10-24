@@ -1,49 +1,62 @@
 package list
 
-type LinkedNode[D any] struct {
-	data     D
-	next     *LinkedNode[D]
-	previous *LinkedNode[D]
+type LinkedNode[T any] struct {
+	value    T
+	next     *LinkedNode[T]
+	previous *LinkedNode[T]
 }
 
-func (l LinkedNode[D]) Data() D {
-	return l.data
+func (l LinkedNode[T]) Data() T {
+	return l.value
 }
 
-func (l LinkedNode[D]) Next() *LinkedNode[D] {
+func (l LinkedNode[T]) Next() *LinkedNode[T] {
 	return l.next
 }
 
-func (l LinkedNode[D]) Previous() *LinkedNode[D] {
+func (l LinkedNode[T]) Previous() *LinkedNode[T] {
 	return l.previous
 }
 
-type LinkedList[D any] struct {
+type LinkedList[T any] struct {
 	length int
-	first  *LinkedNode[D]
-	last   *LinkedNode[D]
+	first  *LinkedNode[T]
+	last   *LinkedNode[T]
 }
 
-func (l LinkedList[D]) Length() int {
+func (l LinkedList[T]) Length() int {
 	return l.length
 }
 
-func (l LinkedList[D]) First() *LinkedNode[D] {
+func (l LinkedList[T]) First() *LinkedNode[T] {
 	return l.first
 }
 
-func (l LinkedList[D]) Last() *LinkedNode[D] {
+func (l LinkedList[T]) Last() *LinkedNode[T] {
 	return l.last
 }
 
-func (l LinkedList[D]) Get(index int) *LinkedNode[D] {
+func (l LinkedList[T]) Get(index int) *LinkedNode[T] {
 	return nil
 }
 
-func (l *LinkedList[D]) Add(node *LinkedNode[D]) {
+func (l *LinkedList[T]) Add(value T) {
+	var (
+		node *LinkedNode[T] = &LinkedNode[T]{}
+	)
+	node.value = value
 	l.length += 1
 }
 
-func (l *LinkedList[D]) Remove(index int) {
+func (l *LinkedList[T]) Remove(index int) {
 	l.length -= 1
+}
+
+func (l *LinkedList[T]) Push(index int, value T) {
+	l.length += 1
+}
+
+func (l *LinkedList[T]) Pop(index int) *LinkedNode[T] {
+	l.length -= 1
+	return l.Get(index)
 }
