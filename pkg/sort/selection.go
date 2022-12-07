@@ -25,7 +25,7 @@ func (s *SelectionSort[T]) Sort() []T {
 		elementIndex = -1
 		elementGreater = *new(T)
 		for index, value := range s.list {
-			if value != nil && value.IsGreater(elementGreater) {
+			if value.IsGreater(elementGreater) {
 				elementIndex = index
 				elementGreater = value.GetValue()
 			}
