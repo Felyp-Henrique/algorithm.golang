@@ -18,16 +18,20 @@ func (s *SelectionSort[T]) Sort() []T {
 	var (
 		listNew        []T                   = make([]T, len(s.list))
 		listOld        []types.Comparable[T] = s.list
+		elementIndex   int
 		elementGreater T
 	)
 	for len(listOld) > 0 {
+		elementIndex = -1
+		elementGreater = *new(T)
 		for index, value := range s.list {
 			if value != nil && value.IsGreater(elementGreater) {
+				elementIndex = index
 				elementGreater = value.GetValue()
-				listOld[index] = nil
 			}
 		}
 		listNew = append(listNew, elementGreater)
+		listOld = append(listOld[:elementIndex], listOld[elementIndex+1:]...)
 	}
 	return listNew
 }
